@@ -1,0 +1,26 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+
+<h1>Edit Apartment {{ apartment.buildingnum }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="Update Apartment">
+</form>
+
+    <br><br>
+
+    <a href="{% url "apartment" %}" class="btn btn-primary">Back to Apartment</a>
+    <br><br>
+    <a href="{% url "home" %}" class="btn btn-primary">Back to Home</a>
+
+
+</div>
+{% endblock content %}

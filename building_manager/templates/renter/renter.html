@@ -1,0 +1,30 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+
+display all renters
+<hr>
+    {% for renter in renters %}
+         <a href="{% url "view_renter" renter.id %}">{{ renter.username }}</a>
+        <br>
+    {% endfor %}
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<a href="{% url "add_renter" %}">Add new renter</a>
+<br><br>
+<a href="{% url "home" %}" class="btn btn-primary" >Back to home</a>
+
+</div>
+
+{% endblock content %}

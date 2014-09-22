@@ -1,0 +1,32 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<div style="padding-left: 10px; width: 500px; color: #555; font-size: 12px;">
+
+<h2>Edit Building / {{ building.building_name }}</h2>
+<form method="post">
+    {% csrf_token %}
+{#    {{ form.as_p }}#}
+    {% for field in form %}
+        {{ field.label_tag }}
+        {{ field }}
+        <br>
+    {% endfor %}
+</form>
+
+
+
+<hr>
+<input type="submit" class="btn btn-primary" value="Update Building">
+&nbsp;&nbsp;
+<a href="{% url "building" %}" class="btn btn-primary">Back to Building</a>
+&nbsp;&nbsp;
+<a href="{% url "home" %}" class="btn btn-primary">Back to Home</a>
+
+</div>
+{% endblock content %}

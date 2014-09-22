@@ -1,0 +1,27 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+
+
+<h1>Add new renter</h1>
+
+<form method="post" enctype="multipart/form-data" class="form" role="form">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+
+    <input class="btn btn-primary" role="button" type="submit" value="Add new renter">
+
+
+</form>
+
+</div>
+{% endblock content %}

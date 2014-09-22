@@ -1,0 +1,30 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div style="width: 510px; padding: 10px; color: #555;">
+
+<hr>
+<h2>{{ building.building_name}}</h2>
+<br>
+
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">address: {{ building.address }}</p>
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">city: {{ building.city }}</p>
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">zip code : {{ building.zip_code }}</p>
+<hr>
+
+
+
+<a href="{% url "edit_building" building.id %}" class="btn btn-primary">Edit building</a>&nbsp;&nbsp;
+
+<a href="{% url "delete_building" building.id %}" class="btn btn-primary">Delete building</a>&nbsp;&nbsp;
+
+<a href="{% url "home" %}" class="btn btn-primary">Back to home</a>&nbsp;&nbsp;
+
+<a href="{% url "building" %}" class="btn btn-primary">Back to building</a>
+
+
+</div>
+
+{% endblock content %}

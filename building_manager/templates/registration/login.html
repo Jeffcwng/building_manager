@@ -1,0 +1,18 @@
+
+{% extends "base_template.html" %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <form method="post" action="." class="form-signin" role="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+    <br>
+
+
+    <input class="btn btn-primary" role="button" type="submit" value="Log in">
+
+    </form>
+    <br>
+    <p>Not member? <a href="{% url 'register' %}" class="btn btn-default" role="button">Register</a></p>
+{% endblock %}

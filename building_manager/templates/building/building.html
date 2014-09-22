@@ -1,0 +1,32 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<div style="width: 360px; padding: 10px; color: #555;">
+<h2>My buildings:</h2>
+<hr style="color: #555555;">
+
+    {% for building in buildings %}
+         <br>
+         <a style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;" href="{% url "view_building" building.id %}">{{ building.building_name }}</a>
+       <br>
+
+    {% endfor %}
+
+<br>
+<br>
+<br>
+
+<hr>
+
+<a href="{% url "add_building" %}" class="btn btn-primary">Add new building</a>
+&nbsp;&nbsp;
+<a href="{% url "home" %}" class="btn btn-primary" >Back to home</a>
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* CSS Document */
+
+{% load staticfiles %}
+
+a:link {
+
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+header {
+    align-content: bottom;
+    background-image: url('/static/img/header_bkgd.jpg');
+    /*background-color: #2a6496;*/
+}

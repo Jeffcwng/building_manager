@@ -1,0 +1,33 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+
+<hr>
+
+<br>
+<h1>{{ apartment.buidlingnum}}</h1>
+<span>floor :: {{ apartment.floor }}</span><br>
+<span>unit number :: {{ apartment.unit_number }}</span>
+<hr>
+
+<br>
+<br>
+<br>
+
+<div style="background-color: #dddddd; border-radius: 4px; padding: 10px;" align="center">
+
+<a href="{% url "edit_apartment" apartment.id %}" class="btn btn-primary">Edit apartment</a>&nbsp;&nbsp;
+
+<a href="{% url "delete_apartment" apartment.id %}" class="btn btn-primary">Delete apartment</a>&nbsp;&nbsp;
+
+<a href="{% url "home" %}" class="btn btn-primary">Back to home</a>&nbsp;&nbsp;
+
+<a href="{% url "apartment" %}" class="btn btn-primary">Back to apartment</a>
+
+</div>
+</div>
+
+{% endblock content %}

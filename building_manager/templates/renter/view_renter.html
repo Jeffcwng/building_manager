@@ -1,0 +1,35 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+
+<hr>
+<h1>{{ renter.username }}</h1>
+<br>
+{{ renter.age }}
+<img style="padding: 5px; border: 1px solid #cccccc;" src="{{ renter.image.url }}" />
+{#<p>address: {{ renter.address }}</p>#}
+{#<p>city: {{ renter.city }}</p>#}
+
+<hr>
+
+<br>
+<br>
+<br>
+
+<div style="background-color: #dddddd; border-radius: 4px; height: 55px; width: 530px; padding: 10px;" align="center">
+
+<a href="{% url "edit_renter" renter.id %}" class="btn btn-primary">Edit renter</a>&nbsp;&nbsp;
+
+<a href="{% url "delete_renter" renter.id %}" class="btn btn-primary">Delete renter</a>&nbsp;&nbsp;
+
+<a href="{% url "home" %}" class="btn btn-primary">Back to home</a>&nbsp;&nbsp;
+
+<a href="{% url "renter" %}" class="btn btn-primary">Back to renter</a>
+
+</div>
+</div>
+
+{% endblock content %}

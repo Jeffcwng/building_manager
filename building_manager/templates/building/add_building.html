@@ -1,0 +1,24 @@
+{% extends 'base_template.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% bootstrap_messages %}
+{% block content %}
+
+<div style="width: 400px; color: #555; font-size: 12px; padding: 10px;">
+<h2>Add new building</h2>
+
+<form method="post" class="form" role="form" >
+
+    {% csrf_token %}
+{{ form.as_p }}
+</form>
+<hr>
+    <input class="btn btn-primary" role="button" type="submit" value="Add new building">
+
+
+
+
+</div>
+{% endblock content %}
