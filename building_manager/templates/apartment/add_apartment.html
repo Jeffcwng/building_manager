@@ -3,21 +3,30 @@
 
 {% block content %}
 
-<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+<div style="width: 400px; color: #555; font-size: 12px; padding: 10px;">
+<h2>Add new apartment</h2><hr>
 
+<form method="post" class="form" role="form">
 
-<h1>Add new apartment info</h1>
-<form method="post" class="form-inline" role="form">
-    <div class="form-group">
     {% csrf_token %}
 
-    {{ form.as_p }}
+{#    {{ form.as_p }}#}
+
+    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+    {% for field in form %}
+
+           <tr><td style="padding: 5px;" width="100" align="right" valign="top">{{ field.label_tag }}</td>
+           <td align="left" valign="top"><span style="padding-left: 10px;">{{ field }}</span></td></tr>
+
+
+    {% endfor %}
+</table>
 
 <input class="btn btn-primary" role="button" type="submit" value="add new apartment">
-     </div>
+
 
 </form>
-
+<hr>
 
 
 </div>

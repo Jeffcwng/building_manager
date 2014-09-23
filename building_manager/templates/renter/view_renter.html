@@ -3,23 +3,31 @@
 
 {% block content %}
 
-<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
-
-<hr>
-<h1>{{ renter.username }}</h1>
-<br>
-{{ renter.age }}
-<img style="padding: 5px; border: 1px solid #cccccc;" src="{{ renter.image.url }}" />
-{#<p>address: {{ renter.address }}</p>#}
-{#<p>city: {{ renter.city }}</p>#}
+<div style="width: 610px; padding: 10px; color: #555;">
 
 <hr>
 
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top"><h2>{{ renter.first_name }} {{ renter.last_name }}</h2>
 <br>
-<br>
+    <p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">{{ renter.aptnum }}</p>
+    <p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">{{ renter.email }}</p>
+    <p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">{{ renter.phone }}</p></td>
+    <td align="left" valign="top">
+        <div style="padding-left: 50px;">
+        <img style="padding: 5px; border: 1px solid #cccccc; width: 240px;" src="{{ renter.image.url }}" />
+        </div>
+    </td>
+
+  </tr>
+</table>
+<hr>
+
 <br>
 
-<div style="background-color: #dddddd; border-radius: 4px; height: 55px; width: 530px; padding: 10px;" align="center">
+
+
 
 <a href="{% url "edit_renter" renter.id %}" class="btn btn-primary">Edit renter</a>&nbsp;&nbsp;
 
@@ -29,7 +37,7 @@
 
 <a href="{% url "renter" %}" class="btn btn-primary">Back to renter</a>
 
-</div>
+
 </div>
 
 {% endblock content %}

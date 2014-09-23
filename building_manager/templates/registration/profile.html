@@ -3,13 +3,17 @@
 {% load bootstrap3 %}
 
 {% block content %}
-    <p>hi {{ user.username }} </p>
+
+ <div style="width: 400px; padding: 10px; color: #555;">
+
+    <h2>hello {{ user.username }} </h2>
+
 
 
 <br>
 
-    joined at {{ user.date_joined }} <br><br>
+    you joined at {{ user.date_joined }} <br><br>
     your email address is {{ user.email }}
-
+</div>
 
 {% endblock content %}

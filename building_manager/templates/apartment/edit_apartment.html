@@ -6,21 +6,33 @@
 {% bootstrap_messages %}
 {% block content %}
 
-<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+<div style="padding-left: 10px; width: 500px; color: #555; font-size: 12px;">
 
-<h1>Edit Apartment {{ apartment.buildingnum }}</h1>
-<form method="post">
+<h2>Edit Apartment / {{ apartment.buildingnum }}</h2>
+<form method="post" class="form-group" role="form">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" class="btn btn-primary" value="Update Apartment">
-</form>
+{#    {{ form.as_p }}#}
 
-    <br><br>
+    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+    {% for field in form %}
+
+           <tr><td style="padding: 5px;" width="100" align="right" valign="top">{{ field.label_tag }}</td>
+           <td align="left" valign="top"><span style="padding-left: 10px;">{{ field }}</span></td></tr>
+
+
+    {% endfor %}
+</table>
+
+
+    <hr>
+    <input type="submit" class="btn btn-primary" value="Update Apartment">
+
+&nbsp;&nbsp;
 
     <a href="{% url "apartment" %}" class="btn btn-primary">Back to Apartment</a>
-    <br><br>
+&nbsp;&nbsp;
     <a href="{% url "home" %}" class="btn btn-primary">Back to Home</a>
 
-
+</form>
 </div>
 {% endblock content %}

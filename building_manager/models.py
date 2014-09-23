@@ -1,7 +1,10 @@
+import os
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
+from building_project import settings
+
 
 class Building(models.Model):
     building_name = models.CharField(max_length=30)
@@ -28,6 +31,7 @@ class Apartment(models.Model):
     rent_amount = models.PositiveIntegerField()
     occupy = models.BooleanField(default=False)
     buidlingnum = models.ForeignKey(Building, related_name='apt_number')
+    apt_photo = models.ImageField(upload_to='images', default='images/apt_default.jpg')
 
     def __unicode__(self):
         return u"{} - {} floor".format(self.buidlingnum, self.floor)
@@ -43,7 +47,7 @@ class Renter(models.Model):
     has_pet = models.BooleanField(default=False)
     smoke = models.BooleanField(default=False)
     aptnum = models.OneToOneField(Apartment, related_name='door_number')
-    image = models.ImageField(upload_to='images', blank=True, null=True)
+    image = models.ImageField(upload_to='images', blank=True, null=True, default='images/renter_default.jpg')
 
     def __unicode__(self):
         return u"{}".format(self.username)

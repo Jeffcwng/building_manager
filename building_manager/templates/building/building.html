@@ -6,10 +6,10 @@
 {% bootstrap_messages %}
 {% block content %}
 
-<div style="width: 360px; padding: 10px; color: #555;">
-<h2>My buildings:</h2>
-<hr style="color: #555555;">
+<div style="width: 510px; padding: 10px; color: #555;">
 
+<hr>
+<h2>My Building List</h2>
     {% for building in buildings %}
          <br>
          <a style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;" href="{% url "view_building" building.id %}">{{ building.building_name }}</a>
@@ -19,7 +19,7 @@
 
 <br>
 <br>
-<br>
+
 
 <hr>
 

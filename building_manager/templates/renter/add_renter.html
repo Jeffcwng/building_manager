@@ -6,22 +6,32 @@
 {% bootstrap_messages %}
 {% block content %}
 
-<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+<div style="width: 400px; color: #555; font-size: 12px; padding: 10px;">
 
 
-<h1>Add new renter</h1>
+<h2>Add new renter</h2>
 
 <form method="post" enctype="multipart/form-data" class="form" role="form">
 
 {% csrf_token %}
 
-{{ form.as_p }}
+{#{{ form.as_p }}#}
+
+    <table width="100%" border="0" cellspacing="5" cellpadding="5">
+    {% for field in form %}
+
+           <tr><td style="padding: 5px;" width="100" align="right" valign="top">{{ field.label_tag }}</td>
+           <td align="left" valign="top"><span style="padding-left: 10px;">{{ field }}</span></td></tr>
+
+
+    {% endfor %}
+</table>
 
 
     <input class="btn btn-primary" role="button" type="submit" value="Add new renter">
 
 
 </form>
-
+<hr>
 </div>
 {% endblock content %}

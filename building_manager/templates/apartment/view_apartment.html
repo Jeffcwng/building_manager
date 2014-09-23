@@ -3,22 +3,27 @@
 
 {% block content %}
 
-<div style="margin: 50px 50px 50px 50px; font-size: 18px;">
+<div style="width: 400px; padding: 10px; color: #555;">
 
 <hr>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="left" valign="top"><h2>{{ apartment.buidlingnum}}</h2>
+<br>
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">floor : {{ apartment.floor }}</p>
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">unit number : {{ apartment.unit_number }}</p>
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">{{ apartment.bedroom }} Bed + {{ apartment.bathroom }} Bath</p>
+<p style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;">{{ apartment.sq_ft }} square feet</p>
+    </td>
+    <td valign="bottom"><div style="padding-left: 50px;">
+    <img style="padding: 5px; border: 1px solid #cccccc; width: 400px; height: 240px;" src="{{ apartment.apt_photo.url }}" />
+   </div> </td>
+  </tr>
+</table>
 
 <br>
-<h1>{{ apartment.buidlingnum}}</h1>
-<span>floor :: {{ apartment.floor }}</span><br>
-<span>unit number :: {{ apartment.unit_number }}</span>
 <hr>
-
-<br>
-<br>
-<br>
-
-<div style="background-color: #dddddd; border-radius: 4px; padding: 10px;" align="center">
-
+</div>
 <a href="{% url "edit_apartment" apartment.id %}" class="btn btn-primary">Edit apartment</a>&nbsp;&nbsp;
 
 <a href="{% url "delete_apartment" apartment.id %}" class="btn btn-primary">Delete apartment</a>&nbsp;&nbsp;
@@ -27,7 +32,7 @@
 
 <a href="{% url "apartment" %}" class="btn btn-primary">Back to apartment</a>
 
-</div>
-</div>
+
+
 
 {% endblock content %}

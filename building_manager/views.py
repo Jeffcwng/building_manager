@@ -107,7 +107,7 @@ def add_apartment(request):
       # If the user is submitting the form
     if request.method == "POST":
         # Get the instance of the form filled with the submitted data
-        form = ApartmentForm(request.POST)
+        form = ApartmentForm(request.POST, request.FILES)
         # Django will check the form's validity for you
         if form.is_valid():
             # Saving the form will create a new Apt object
@@ -129,7 +129,7 @@ def edit_apartment(request, apartment_id):
     if request.method == "POST":
         # We prefill the form by passing 'instance', which is the specific
         # object we are editing
-        form = ApartmentForm(request.POST, instance=apartment)
+        form = ApartmentForm(request.POST, request.FILES, instance=apartment)
         if form.is_valid():
             if form.save():
                 return redirect("/apartment/{}".format(apartment_id))
@@ -165,7 +165,7 @@ def add_renter(request):
       # If the user is submitting the form
     if request.method == "POST":
         # Get the instance of the form filled with the submitted data
-        form = RenterForm(request.POST)
+        form = RenterForm(request.POST, request.FILES)
         # Django will check the form's validity for you
         if form.is_valid():
             # Saving the form will create a new renter object
@@ -186,7 +186,7 @@ def edit_renter(request, renter_id):
     if request.method == "POST":
         # We prefill the form by passing 'instance', which is the specific
         # object we are editing
-        form = RenterForm(request.POST, instance=renter)
+        form = RenterForm(request.POST, request.FILES, instance=renter)
         if form.is_valid():
             if form.save():
                 return redirect("/renter/{}".format(renter_id))
