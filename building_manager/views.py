@@ -20,7 +20,9 @@ def register(request):
             # user.email_user("Welcome!", "Thank you for signing up for our website.")
             text_content = 'Thank you for signing up for our website, {}'.format(user.username)
             # <h2>Thanks {} for signing up!</h2> <div>I hope you enjoy using our site</div>
-            html_content = '<div style="width:500px;"><table width="100%" border="0" align="center" cellpadding="5" style="background: #ffffff; border-right: 1px solid #cccccc; border-left: 1px solid #cccccc; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;"><tr><td valign="bottom"><table width="100%" height="75px;" border="0" style=" background-color:#285e8e; padding-left:10px;"><tr><td align="left" valign="bottom"><span style="color:#fff; padding-bottom:5px; font-size:22px; font-family:Arial, Helvetica, sans-serif; letter-spacing:2px;"><strong>PROPERTY MANAGER</strong></span></td></tr></table></td></tr><tr><td><div style="padding:5px; color:#555555; font-family: Arial, Helvetica, sans-serif;"><h2>Hi {}, thank you for signing up!</h2> I hope you enjoy using our site!</div></td></tr><tr><td><table width="100%" height="20px;" border="0" style=" background-color:#285e8e;"><tr><td align="left" valign="bottom">&nbsp;</td></tr></table></td></tr></table></div>'.format(user.username)
+            html_content = '<div style="width:500px;">' \
+                           '<table width="100%" border="0" align="center" cellpadding="5" style="background: #ffffff; border-right: 1px solid #cccccc; border-left: 1px solid #cccccc; border-top: 1px solid #cccccc; border-bottom: 1px solid #cccccc;">' \
+                           '<tr><td valign="bottom"><table width="100%" height="75px;" border="0" style=" background-color:#285e8e; padding-left:10px;"><tr><td align="left" valign="bottom"><span style="color:#fff; padding-bottom:5px; font-size:22px; font-family:Arial, Helvetica, sans-serif; letter-spacing:2px;"><strong>PROPERTY MANAGER</strong></span></td></tr></table></td></tr><tr><td><div style="padding:5px; color:#555555; font-family: Arial, Helvetica, sans-serif;"><h2>Hi {}, thank you for signing up!</h2> I hope you enjoy using our site!</div></td></tr><tr><td><table width="100%" height="20px;" border="0" style=" background-color:#285e8e;"><tr><td align="left" valign="bottom">&nbsp;</td></tr></table></td></tr></table></div>'.format(user.username)
             msg = EmailMultiAlternatives("Welcome!", text_content, settings.DEFAULT_FROM_EMAIL, [user.email])
             msg.attach_alternative(html_content, "text/html")
             msg.send()
@@ -39,15 +41,18 @@ def profile(request):
     return render(request, "registration/profile.html")
 
 #####  Building section  #####
+@login_required
 def building(request):
     buildings = Building.objects.all()
-    return render_to_response("building/building.html", {'buildings': buildings})
+    return render(request, "building/building.html", {'buildings': buildings})
 
+@login_required
 def view_building(request, building_id):
     building = Building.objects.get(id=building_id)
     data = {'building': building}
-    return render_to_response("building/view_building.html", data)
+    return render(request, "building/view_building.html", data)
 
+@login_required
 def add_building(request):
       # If the user is submitting the form
     if request.method == "POST":
@@ -66,6 +71,7 @@ def add_building(request):
     data = {'form': form}
     return render(request, "building/add_building.html", data)
 
+@login_required
 def edit_building(request, building_id):
     # Similar to the the detail view, we have to find the existing Building we are editing
     building = Building.objects.get(id=building_id)
@@ -94,13 +100,13 @@ def delete_building(request, building_id):
 @login_required
 def apartment(request):
     apartments = Apartment.objects.all()
-    return render_to_response("apartment/apartment.html", {'apartments': apartments})
+    return render(request, "apartment/apartment.html", {'apartments': apartments})
 
 @login_required
 def view_apartment(request, apartment_id):
     apartment = Apartment.objects.get(id=apartment_id)
     data = {'apartment': apartment}
-    return render_to_response("apartment/view_apartment.html", data)
+    return render(request, "apartment/view_apartment.html", data)
 
 @login_required
 def add_apartment(request):
@@ -117,7 +123,6 @@ def add_apartment(request):
     # Else if the user is looking at the form page
     else:
         form = ApartmentForm()
-
     data = {'form': form}
     return render(request, "apartment/add_apartment.html", data)
 
@@ -151,14 +156,14 @@ def delete_apartment(request, apartment_id):
 @login_required
 def renter(request):
     renters = Renter.objects.all()
-    return render_to_response("renter/renter.html", {'renters': renters})
+    return render(request, "renter/renter.html", {'renters': renters})
 
 @login_required
 def view_renter(request, renter_id):
     renter = Renter.objects.get(id=renter_id)
     data = {'renter': renter}
 
-    return render_to_response("renter/view_renter.html", data)
+    return render(request, "renter/view_renter.html", data)
 
 @login_required
 def add_renter(request):

@@ -17,6 +17,7 @@ class Building(models.Model):
     gym = models.BooleanField(default=False)
     club_house = models.BooleanField(default=False)
     parking = models.CharField(max_length=30, help_text="Indoor or Outdoor carport?")
+    image = models.ImageField(upload_to='images', blank=True, null=True)
 
     def __unicode__(self):
         return u"{}".format(self.building_name)
@@ -31,10 +32,11 @@ class Apartment(models.Model):
     rent_amount = models.PositiveIntegerField()
     occupy = models.BooleanField(default=False)
     buidlingnum = models.ForeignKey(Building, related_name='apt_number')
-    apt_photo = models.ImageField(upload_to='images', default='images/apt_default.jpg')
+    image = models.ImageField(upload_to='images', blank=True, null=True, default='images/apt_default.jpg')
 
     def __unicode__(self):
         return u"{} - {} floor".format(self.buidlingnum, self.floor)
+
 
 class Renter(models.Model):
     first_name = models.CharField(max_length=25)
@@ -47,10 +49,11 @@ class Renter(models.Model):
     has_pet = models.BooleanField(default=False)
     smoke = models.BooleanField(default=False)
     aptnum = models.OneToOneField(Apartment, related_name='door_number')
-    image = models.ImageField(upload_to='images', blank=True, null=True, default='images/renter_default.jpg')
+    image = models.ImageField(upload_to='images', blank=True, null=True, default='images/unknown.png')
 
     def __unicode__(self):
         return u"{}".format(self.username)
+
 
 class Player(AbstractUser):
     phone = models.CharField(max_length=12, help_text="Format should be: 650-111-2222")
