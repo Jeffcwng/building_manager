@@ -25,7 +25,7 @@ def register(request):
                            '<tr><td valign="bottom"><table width="100%" height="75px;" border="0" style=" background-color:#285e8e; padding-left:10px;"><tr><td align="left" valign="bottom"><span style="color:#fff; padding-bottom:5px; font-size:22px; font-family:Arial, Helvetica, sans-serif; letter-spacing:2px;"><strong>PROPERTY MANAGER</strong></span></td></tr></table></td></tr><tr><td><div style="padding:5px; color:#555555; font-family: Arial, Helvetica, sans-serif;"><h2>Hi {}, thank you for signing up!</h2> I hope you enjoy using our site!</div></td></tr><tr><td><table width="100%" height="20px;" border="0" style=" background-color:#285e8e;"><tr><td align="left" valign="bottom">&nbsp;</td></tr></table></td></tr></table></div>'.format(user.username)
             msg = EmailMultiAlternatives("Welcome!", text_content, settings.DEFAULT_FROM_EMAIL, [user.email])
             msg.attach_alternative(html_content, "text/html")
-            msg.send()
+            # msg.send()
             return redirect("/profile")
     else:
         form = EmailUserCreationForm()
