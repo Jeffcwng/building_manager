@@ -1,2 +1,2 @@
-web: gunicorn building_project.wsgi --log-file -
-web: python manage.py collectstatic --noinput
+web: python manage.py collectstatic --noinput; gunicorn building_project.wsgi --log-file -
+
