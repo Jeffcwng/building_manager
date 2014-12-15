@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap3',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,7 +116,7 @@ ALLOWED_HOSTS = ['*']
 # Static asset configuration
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'staticfiles'
+STATIC_ROOT = 'static/'
 print "staticfiles: {}".format(STATIC_ROOT)
 STATIC_URL = '/static/'
 
