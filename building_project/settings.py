@@ -116,7 +116,7 @@ ALLOWED_HOSTS = ['*']
 # Static asset configuration
 import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = 'static/'
+STATIC_ROOT = 'staticfiles'
 print "staticfiles: {}".format(STATIC_ROOT)
 STATIC_URL = '/static/'
 
@@ -124,6 +124,10 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 try:
     from local_settings import *
