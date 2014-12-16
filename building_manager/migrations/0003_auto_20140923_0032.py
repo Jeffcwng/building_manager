@@ -14,11 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='apartment',
             name='apt_photo',
-            field=models.ImageField(default=b'staticfiles/images/apt_default.jpg', null=True, upload_to=b'images', blank=True),
+            field=models.ImageField(default=b'static/images/apt_default.jpg', null=True, upload_to=b'images', blank=True),
         ),
         migrations.AlterField(
             model_name='renter',
             name='image',
-            field=models.ImageField(default=b'staticfiles/images/renter_default.jpg', null=True, upload_to=b'images', blank=True),
+            field=models.ImageField(default=b'static/images/renter_default.jpg', null=True, upload_to=b'images', blank=True),
         ),
     ]
