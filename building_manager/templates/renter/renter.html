@@ -14,7 +14,7 @@
     {% for renter in renters %}
         <br>
         <div style="padding-right: 20px;">
-        <img style="padding: 1px; border: 1px solid #cccccc; width: 39px;" src="{{ renter.image.url }}" />
+        <img style="padding: 1px; border: 1px solid #cccccc; width: 39px;" src="{{ s3_url }}{{ renter.image }}" />
         <a style="font-size: 18px; background-color: #eee; padding: 8px; width: 300px; border-radius: 4px;" href="{% url "view_renter" renter.id %}">{{ renter.first_name }} {{ renter.last_name }}</a>
         </div>
 

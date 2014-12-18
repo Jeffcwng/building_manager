@@ -156,17 +156,19 @@ def delete_apartment(request, apartment_id):
 @login_required
 def renter(request):
     renters = Renter.objects.all()
-    return render(request, "renter/renter.html", {'renters': renters})
+    s3_url = "https://jng-aws.s3.amazonaws.com/"
+    return render(request, "renter/renter.html", {'renters': renters, 's3_url': s3_url})
 
 @login_required
 def view_renter(request, renter_id):
     renter = Renter.objects.get(id=renter_id)
-    data = {'renter': renter}
-
+    s3_url = "https://jng-aws.s3.amazonaws.com/"
+    data = {'renter': renter, 's3_url': s3_url}
     return render(request, "renter/view_renter.html", data)
 
 @login_required
 def add_renter(request):
+    s3_url = "https://jng-aws.s3.amazonaws.com/"
       # If the user is submitting the form
     if request.method == "POST":
         # Get the instance of the form filled with the submitted data
@@ -180,13 +182,14 @@ def add_renter(request):
     # Else if the user is looking at the form page
     else:
         form = RenterForm()
-    data = {'form': form}
+    data = {'form': form, 's3_url': s3_url}
     return render(request, "renter/add_renter.html", data)
 
 @login_required
 def edit_renter(request, renter_id):
     # Similar to the the detail view, we have to find the existing renter we are editing
     renter = Renter.objects.get(id=renter_id)
+    s3_url = "https://jng-aws.s3.amazonaws.com/"
     # We still check to see if we are submitting the form
     if request.method == "POST":
         # We prefill the form by passing 'instance', which is the specific
@@ -200,7 +203,7 @@ def edit_renter(request, renter_id):
         # We prefill the form by passing 'instance', which is the specific
         # object we are editing
         form = RenterForm(instance=renter)
-    data = {"renter": renter, "form": form}
+    data = {"renter": renter, "form": form, "s3_url": s3_url}
     return render(request, "renter/edit_renter.html", data)
 
 @login_required
