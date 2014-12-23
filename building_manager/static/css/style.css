@@ -15,3 +15,13 @@ header {
     background-image: url('/static/img/header_bkgd.jpg');
     /*background-color: #2a6496;*/
 }
+
+
+
+.address {
+        font-size: 18px;
+        background-color: #eee;
+        padding: 8px;
+        width: 300px;
+        border-radius: 4px;
+    }
